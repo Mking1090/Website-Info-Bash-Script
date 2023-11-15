@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Aquires the website name from user
+read -p "Enter a domain name: " domain_name
+
+# Uses nslookup to get the IP address of the website
+ip_address=$(nslookup "${domain_name}" | awk '/^Address: / { print $2 }')
+
+# Uses whois to get the registrar and expiration date
+registrar=$(whois "${domain_name}" | awk -F':' '/Registrar:/ {print $2}' | tr -d '[:space:]')
+expiration_date=$(whois "${domain_name}" | awk -F':' '/Expiry Date:/ {print $2}' | tr -d '[:space:]')
+
+# Print the results 
+printf "%-20s %-20s %-20s\n" "Domain Name:" "${domain_name}" ""
+printf "%-20s %-20s %-20s\n" "IP Address:" "${ip_address}" ""
+printf "%-20s %-20s %-20s\n" "Registrar:" "${registrar}" ""
+printf "%-20s %-20s %-20s\n" "Expiration Date:" "${expiration_date}" ""
