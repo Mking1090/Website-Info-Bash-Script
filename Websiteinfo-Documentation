@@ -1,0 +1,17 @@
+Line 1: The Shebang: Necessary to have the script run in Bash
+Line 2:  Blank
+Line3:  Code Commentary:  Describes what the next line does for anyone else who uses this script.
+Line 4:  This line prompts the user  to enter a domain name and reads the user input and puts this input as a variable called domain_name
+Line 5:  Blank
+Line 6:  More code commentary for the next line of code.
+Line 7:  This line uses the Nslookup command to get the ip address of the domain name of the site site entered by the user.  This information is then filtered by the grep command to only extract the ip address from the nslookup command results using a regular expression.  This is then stored as the variable Ip_address 
+Line 8: Blank
+Line 9: More code commentary for the next two lines of code
+Line 10:  This line uses the whois command to extract information about the domain registrar and the expiration date.  This information is piped to the grep command which extracts the information from this command using a regular expression to make it not case sensitive.  The output then is piped to the awk command to split the output using the : to extract the second field which contains the registrar information.  The Tr command is then used to remove any leading or trailing characters and then store that information in the Registar variable.
+Line 11:  Is pretty much the same command as line 10 but instead of grabbing the registrar information  it grabs the expiration date of the website instead  and stores it as the variable experation_date
+Line 12: Blank
+Line 13:  Code commentary 
+Line 14:  Prints out the site domain name in a formatted look.
+Line 15: Prints out the site IP Address in a formatted as the previous command.
+Line 16: Prints out the Registrar information in the same format as line 14.
+Line 17: Prints out the site expiration date in the same format as the above commands. 
